@@ -859,3 +859,50 @@ button:focus {
     from, to { border-color: transparent }
     50% { border-color: var(--accent-color); }
 }
+/* Floating animation for stats */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-stats .stat {
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero-stats .stat:nth-child(1) {
+    animation-delay: 0s;
+}
+.hero-stats .stat:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.hero-stats .stat:nth-child(3) {
+    animation-delay: 1s;
+}
+/* Animated background dots */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+    animation: pulseBackground 10s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulseBackground {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+/* Simple fade-in for welcome message */
+.hero-title {
+    animation: fadeIn 2s ease-out;
+}
+
+.highlight {
+    animation: glowPulse 2s infinite;
+    color: var(--accent-color);
+}
