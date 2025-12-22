@@ -807,7 +807,8 @@ button:focus {
     letter-spacing: 0.15em;
     animation: 
         typing 3.5s steps(40, end),
-        blink-caret 0.75s step-end infinite;
+        blink-caret 0.75s step-end infinite,
+        remove-cursor 0.1s 6s forwards;  /* ← ADD THIS LINE */
 }
 
 @keyframes typing {
@@ -819,7 +820,11 @@ button:focus {
     from, to { border-color: transparent }
     50% { border-color: var(--accent-color); }
 }
-
+@keyframes remove-cursor {
+    to { 
+        border-right-color: transparent; 
+    }
+}
 /* 2. FLOATING EFFECT FOR STATS */
 @keyframes float {
     0%, 100% { 
@@ -866,14 +871,4 @@ button:focus {
 
 .hero-buttons {
     animation: fadeInUp 1s ease-out 0.8s both;
-}    
-.typewriter-text {
-    animation: 
-        typing 3.5s steps(40, end),
-        blink-caret 0.75s step-end infinite,
-        remove-cursor 0.1s 6s forwards;
-}
-
-@keyframes remove-cursor {
-    to { border-right-color: transparent; }
 }
