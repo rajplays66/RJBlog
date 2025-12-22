@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJBlog | My Thoughts, My World</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+          <a href="#" class="logo">
+    <i class="fas fa-laptop-code"></i>
+    <span>RJBlog</span>
+</a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="theme-toggle-container">
+                    <button id="themeToggle" class="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+    Welcome to <span class="highlight">RJBlog</span>
+</h1>
+                <p class="hero-subtitle">
+                    Where thoughts meet the darkness of creativity. Exploring technology, design, and life through a darker lens.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#blog" class="btn btn-primary">
+                        <i class="fas fa-book-reader"></i> Read Blog
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>42+</h3>
+                    <p>Articles Published</p>
+                </div>
+                <div class="stat">
+                    <h3>5K+</h3>
+                    <p>Monthly Readers</p>
+                </div>
+                <div class="stat">
+                    <h3>3</h3>
+                    <p>Years Writing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest <span class="highlight">Posts</span></h2>
+                <p class="section-subtitle">Dive into my latest thoughts and explorations</p>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Coding" class="blog-image">
+                        <div class="blog-category">Technology</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-title">The Future of Web Development in 2024</h3>
+                        <p class="blog-excerpt">Exploring the latest trends, frameworks, and tools that are shaping the future of web development...</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-footer">
+                        <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Design" class="blog-image">
+                        <div class="blog-category">Design</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-title">Dark UI Patterns That Actually Work</h3>
+                        <p class="blog-excerpt">A deep dive into effective dark mode user interface patterns that enhance user experience...</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 10, 2024</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-footer">
+                        <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Productivity" class="blog-image">
+                        <div class="blog-category">Productivity</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-title">Minimalism in Digital Workspaces</h3>
+                        <p class="blog-excerpt">How adopting minimalist principles can dramatically boost your digital productivity...</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 5, 2024</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-footer">
+                        <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="view-all-container">
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-list"></i> View All Articles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About <span class="highlight">Me</span></h2>
+                <p class="section-subtitle">The person behind the words</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+    <img src="https://i.ibb.co/JWR2tqNG/Gemini-Generated-Image-mamvmlmamvmlmamv.png" alt="RJ">
+</div>
+                <div class="about-text">
+                    <h3>Hello, I'm Raj</h3>
+                    <p>I'm a software developer and writer with a passion for exploring the intersection of technology, design, and human experience. I've been researching about tech and Productivity for 2 years.</p>
+                    <p>This blog is my digital sanctuary where I share insights, tutorials, and thoughts about the digital world we live in. I believe in the power of dark themes not just for aesthetics, but for reducing eye strain and improving focus.</p>
+                    <p>When I'm not coding or writing, you can find me hiking,singing, reading sci-fi novels, or experimenting with new coffee brewing methods.</p>
+                    
+                    <div class="skills">
+                        <h4>What I Write About:</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Web Development</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Productivity</span>
+                            <span class="skill-tag">Technology</span>
+                            <span class="skill-tag">Minimalism</span>
+                            <span class="skill-tag">Dark Patterns</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+                <p class="section-subtitle">Have thoughts to share? I'd love to hear from you</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>rajplays66@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Chittagong,Bangladesh </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Response Time</h4>
+                            <p>Usually within 48 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Follow Me</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="What is this regarding?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" placeholder="Your message here..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+    <i class="fas fa-laptop-code"></i>
+    <span>RJBlog</span>
+</a>
+                    <p>RJ's personal blog about technology, creativity, and life.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get the latest posts directly in your inbox.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+               <p>&copy; 2024 RJBlog. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart"></i> and dark mode in mind.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
