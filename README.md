@@ -1,2 +1,2 @@
-# RJBlog
-Welcome to RJBlog 
+# RJSyncro 
+Welcome to RJSyncro 
