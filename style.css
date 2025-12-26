@@ -885,22 +885,12 @@ custom
 .logo:hover .custom-logo {
     transform: scale(1.08);
 }
-/* Navigation Logo */
 .navbar .logo img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #00ffff;
-  margin-right: 10px;
+  width: 60px;
+  height: 60px;
 }
 
-/* Chat menu icon */
 .nav-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  object-fit: cover;
-  vertical-align: middle;
-  margin-right: 8px;
+  width: 25px;
+  height: 25px;
 }
