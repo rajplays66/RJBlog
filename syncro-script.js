@@ -1,7 +1,6 @@
 // ========== SYNCRO AI CHATBOT SCRIPT ==========
 // Replace 'YOUR_GEMINI_API_KEY' with your actual API key from Google AI Studio.
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
-
+const API_URL = '/api/chat';  // Call YOUR backend, not Gemini directly
 // DOM Elements
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
