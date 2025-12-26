@@ -1,6 +1,5 @@
 // ========== SYNCRO AI CHATBOT SCRIPT ==========
 // Replace 'YOUR_GEMINI_API_KEY' with your actual API key from Google AI Studio.
-const API_KEY = 'gen-lang-client-0205305336'; // <-- REPLACE THIS
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
 
 // DOM Elements
