@@ -38,11 +38,27 @@ document.addEventListener('DOMContentLoaded', function() {
             addMessage('Error: ' + error.message);
         }
     }
+    function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `${sender}-message`; // Creates 'user-message' or 'ai-message'
     
-    function addMessage(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        messages.appendChild(div);
-        messages.scrollTop = messages.scrollHeight;
-    }
-});
+    // Add sender label
+    const senderLabel = document.createElement('strong');
+    senderLabel.textContent = sender === 'user' ? 'You' : 'Syncro';
+    
+    // Add message text
+    const textDiv = document.createElement('div');
+    textDiv.className = 'message-content';
+    textDiv.textContent = text;
+    
+    // Assemble message
+    messageDiv.appendChild(senderLabel);
+    messageDiv.appendChild(textDiv);
+    
+    // Add to chat
+    chatMessages.appendChild(messageDiv);
+    
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+    
