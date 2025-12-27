@@ -3,7 +3,12 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
-    
+    // ===== FILE UPLOAD HANDLING =====
+    if (req.body.fileData) {
+        const fileText = await processFile(req.body.fileData);
+        req.body.message = `${req.body.message}\n\nFile content: ${fileText}`;
+    }
+    // ===== END FILE UPLOAD =====
     try {
         const { message, system_instruction } = req.body;
         
@@ -58,29 +63,61 @@ export default async function handler(req, res) {
             text = text.toLowerCase();
             const matches = [];
             
-            if (text.includes('template') || text.includes('website') || text.includes('design')) {
-                matches.push('web-templates');
-            }
-            if (text.includes('saas') || text.includes('software') || text.includes('app')) {
-                matches.push('saas-boilerplate');
-            }
-            if (text.includes('chat') || text.includes('ai') || text.includes('assistant')) {
-                matches.push('ai-chat-system');
-            }
-            if (text.includes('custom') || text.includes('build') || text.includes('develop')) {
-                matches.push('custom-development');
-            }
-            if (text.includes('price') || text.includes('cost') || text.includes('how much')) {
-                return Object.keys(PRODUCTS);
-            }
-            if (text.includes('what do you sell') || text.includes('products') || text.includes('offer')) {
-                return Object.keys(PRODUCTS);
-            }
-            
-            return matches;
-        };
-        
+    // ===== IMPROVED WEB TEMPLATES DETECTION =====
+    if (text.includes('template') || text.includes('website') || text.includes('web design') || 
+        text.includes('landing page') || text.includes('portfolio site') || 
+        text.includes('business website') || text.includes('ecommerce site') ||
+        text.includes('wordpress') || text.includes('html template')) {
+        matches.push('web-templates');
+    }
+    
+    // ===== IMPROVED SAAS DETECTION =====
+    if (text.includes('saas') || text.includes('software') || text.includes('app') || 
+        text.includes('application') || text.includes('dashboard') || 
+        text.includes('admin panel') || text.includes('user management') ||
+        text.includes('subscription') || text.includes('monthly plan')) {
+        matches.push('saas-boilerplate');
+    }
+    
+    // ===== IMPROVED AI CHAT DETECTION =====
+    if (text.includes('chat') || text.includes('ai') || text.includes('assistant') || 
+        text.includes('bot') || text.includes('chatbot') || text.includes('chat gpt') ||
+        text.includes('customer support') || text.includes('automated reply') ||
+        text.includes('what you are using') || text.includes('like this')) {
+        matches.push('ai-chat-system');
+    }
+    
+    // ===== IMPROVED CUSTOM DEV DETECTION =====
+    if (text.includes('custom') || text.includes('build') || text.includes('develop') || 
+        text.includes('create') || text.includes('make me') || text.includes('hire') ||
+        text.includes('contract') || text.includes('freelance') || 
+        text.includes('from scratch') || text.includes('bespoke')) {
+        matches.push('custom-development');
+    }
+    
+    // ===== PRICING QUESTIONS =====
+    if (text.includes('price') || text.includes('cost') || text.includes('how much') || 
+        text.includes('pricing') || text.includes('$$') || text.includes('expensive') ||
+        text.includes('affordable') || text.includes('budget')) {
+        return Object.keys(PRODUCTS); // Show all products
+    }
+    
+    // ===== GENERAL PRODUCT QUESTIONS =====
+    if (text.includes('what do you sell') || text.includes('products') || 
+        text.includes('offer') || text.includes('services') || 
+        text.includes('what can you do') || text.includes('business offer')) {
+        return Object.keys(PRODUCTS);
+    }
+    
+    return matches;
+};
         const relevantProducts = detectProducts(message);
+       // ===== REAL-TIME DATA =====
+const realTimeData = await getRealTimeData(message);
+if (realTimeData) {
+    enhancedPrompt += `\n\nREAL-TIME DATA:\n${realTimeData}`;
+}
+// ===== END REAL-TIME DATA =====
         // ===== WEB SEARCH ENHANCEMENT =====
 const shouldSearchWeb = message.includes('current') || 
                        message.includes('today') || 
