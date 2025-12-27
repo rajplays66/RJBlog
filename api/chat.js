@@ -124,9 +124,28 @@ const BUSINESS_FAQ = {
     "customization": "Yes! All products are fully customizable. We provide documentation and examples.",
     "team": "We're a team of 5 developers and designers based in San Francisco, founded in 2023.",
     "discount": "We offer 20% student discount and bulk discounts for 3+ products. Contact sales.",
+    "timeline": "Digital products: Instant delivery | Custom projects: 2-8 weeks depending on scope."
     "demo": "You can request a live demo by contacting our sales team. We'll schedule a Zoom call.",
     "integration": "Our products integrate with popular tools like Stripe, Mailchimp, Google Analytics.",
-    "timeline": "Digital products: Instant delivery | Custom projects: 2-8 weeks depending on scope."
+    "demo": "You can book a free 30-minute demo at: https://calendly.com/synchrotech/demo",
+    "schedule": "Book a call: https://calendly.com/synchrotech/consultation",
+    "meeting": "Schedule meeting: https://calendly.com/synchrotech/meeting",
+
+// Add detection for demo requests
+if (text.includes('demo') || text.includes('schedule') || 
+    text.includes('meeting') || text.includes('call') ||
+    text.includes('consultation')) {
+    // Force demo link response
+    return res.status(200).json({
+        candidates: [{
+            content: {
+                parts: [{ 
+                    text: "I'd love to schedule a demo! 🗓️\n\nBook a 30-minute slot here:\nhttps://calendly.com/synchrotech/demo\n\nOr email sales@synchrotech.com to arrange." 
+                }]
+            }
+        }]
+    });
+}
 };
 
 // Helper to check FAQ
