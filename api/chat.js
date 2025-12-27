@@ -108,7 +108,10 @@ export default async function handler(req, res) {
         text.includes('what can you do') || text.includes('business offer')) {
         return Object.keys(PRODUCTS);
     }
-    // ===== BUSINESS FAQ DATABASE =====
+
+    return matches;
+};
+        // ===== BUSINESS FAQ DATABASE =====
 const BUSINESS_FAQ = {
     "how to buy": "You can purchase directly on our website with credit card or PayPal. Most products offer instant digital delivery.",
     "how to purchase": "Visit our website, select your product, add to cart, and checkout. You'll receive download links immediately.",
@@ -137,8 +140,6 @@ const checkFAQ = (text) => {
     return null;
 };
 // ===== END FAQ =====
-    return matches;
-};
         const relevantProducts = detectProducts(message);
        // ===== REAL-TIME DATA =====
 const realTimeData = await getRealTimeData(message);
