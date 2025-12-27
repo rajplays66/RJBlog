@@ -21,9 +21,9 @@ export default async function handler(req, res) {
         }
         
         // Prepare prompt
-        const prompt = system_instruction 
-            ? `${system_instruction}\n\nUser: ${message}`
-            : message;
+const prompt = system_instruction 
+    ? `${system_instruction}\n\nUser: ${message}\nAssistant:`
+    : `User: ${message}\nAssistant:`;
         
         // Call Gemini
         const response = await fetch(
