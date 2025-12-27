@@ -141,7 +141,24 @@ const checkFAQ = (text) => {
 };
 // ===== END FAQ =====
         const relevantProducts = detectProducts(message);
-       // ===== REAL-TIME DATA =====
+     // ===== CHECK FAQ FIRST =====
+const faqAnswer = checkFAQ(message);
+if (faqAnswer) {
+    // Return FAQ answer immediately (fast, no AI call needed)
+    return res.status(200).json({
+        candidates: [{
+            content: {
+                parts: [{ text: faqAnswer }]
+            }
+        }],
+        metadata: {
+            isFAQ: true,
+            suggestedProducts: relevantProducts
+        }
+    });
+}
+// ===== END FAQ CHECK =====
+        // ===== REAL-TIME DATA =====
 const realTimeData = await getRealTimeData(message);
 if (realTimeData) {
     enhancedPrompt += `\n\nREAL-TIME DATA:\n${realTimeData}`;
