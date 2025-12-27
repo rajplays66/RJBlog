@@ -31,6 +31,8 @@ export default async function handler(req, res) {
                 features: ["Fully responsive", "SEO optimized", "Easy customization", "Free updates"],
                 bestFor: "Startups, small businesses, freelancers",
                 link: "/products/templates"
+                paymentLink: "https://buy.stripe.com/test_00g4jK9yN7kR8KA6op",
+        buyNowText: "Buy Template (From $49)"
             },
             "saas-boilerplate": {
                 name: "SaaS Starter Kit",
@@ -39,6 +41,8 @@ export default async function handler(req, res) {
                 features: ["User authentication", "Stripe payments", "Admin dashboard", "API ready", "Documentation"],
                 bestFor: "Developers launching SaaS products",
                 link: "/products/saas-kit"
+                paymentLink: "https://buy.stripe.com/test_8wM5nidwv0zG1Re7st",
+        buyNowText: "Get SaaS Kit ($299)"
             },
             "ai-chat-system": {
                 name: "AI Chat System",
@@ -47,6 +51,8 @@ export default async function handler(req, res) {
                 features: ["Multiple AI providers", "Custom knowledge base", "Admin panel", "Analytics", "Easy setup"],
                 bestFor: "Businesses wanting AI customer support",
                 link: "/products/ai-chat"
+                paymentLink: "https://buy.stripe.com/test_7sI6mKbwB9tL2TD5qr",
+        buyNowText: "Get AI Chat System ($199)"
             },
             "custom-development": {
                 name: "Custom Development",
@@ -55,6 +61,8 @@ export default async function handler(req, res) {
                 features: ["Full customization", "Dedicated support", "Source code ownership", "3 months maintenance"],
                 bestFor: "Businesses with specific, unique needs",
                 link: "/contact"
+                paymentLink: "https://calendly.com/synchrotech/consultation",
+        buyNowText: "Request Custom Quote"
             }
         };
         
@@ -184,7 +192,41 @@ if (faqAnswer) {
     });
 }
 // ===== END FAQ CHECK =====
-        // ===== REAL-TIME DATA =====
+// ===== DEMO/MEETING DETECTION =====
+const text = message.toLowerCase();
+if (text.includes('demo') || text.includes('schedule') || 
+    text.includes('meeting') || text.includes('call') ||
+    text.includes('consultation') || text.includes('book a') ||
+    text.includes('setup call') || text.includes('talk to sales') ||
+    text.includes('speak with') || text.includes('discuss project')) {
+    
+    // Track analytics
+    console.log('📊 ANALYTICS DEMO:', {
+        timestamp: new Date().toISOString(),
+        question: message.substring(0, 100),
+        productsMentioned: relevantProducts,
+        isDemoRequest: true
+    });
+    
+    // Return demo scheduling response
+    return res.status(200).json({
+        candidates: [{
+            content: {
+                parts: [{ 
+                    text: `🎯 Perfect! I'd love to schedule a demo for you!\n\n📅 **Book a 30-minute slot here:**\nhttps://calendly.com/synchrotech/demo\n\n📞 **Or email our sales team:**\nsales@synchrotech.com\n\n💡 **Best times:** Weekdays 9AM-6PM (PST)\nWe'll discuss your needs and show you relevant products.` 
+                }]
+            }
+        }],
+        metadata: {
+            isDemoRequest: true,
+            suggestedProducts: relevantProducts
+        }
+    });
+}
+// ===== END DEMO DETECTION =====
+
+// If not FAQ and not demo request, continue to AI API call...
+    // ===== REAL-TIME DATA =====
 const realTimeData = await getRealTimeData(message);
 if (realTimeData) {
     enhancedPrompt += `\n\nREAL-TIME DATA:\n${realTimeData}`;
