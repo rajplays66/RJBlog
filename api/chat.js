@@ -144,6 +144,13 @@ const checkFAQ = (text) => {
      // ===== CHECK FAQ FIRST =====
 const faqAnswer = checkFAQ(message);
 if (faqAnswer) {
+    console.log('📊 ANALYTICS FAQ:', {
+        timestamp: new Date().toISOString(),
+        question: message.substring(0, 100),
+        productsMentioned: relevantProducts,
+        isFAQ: true
+    });
+    // ===== END ANALYTICS =====
     // Return FAQ answer immediately (fast, no AI call needed)
     return res.status(200).json({
         candidates: [{
@@ -229,7 +236,14 @@ if (shouldSearchWeb) {
         }
         
         const replyText = data.choices?.[0]?.message?.content || "I apologize, I couldn't generate a response. Please try again or contact our support.";
-        
+        console.log('📊 ANALYTICS AI:', {
+    timestamp: new Date().toISOString(),
+    question: message.substring(0, 100),
+    productsMentioned: relevantProducts,
+    isFAQ: false,
+    userAgent: req.headers['user-agent']?.substring(0, 50)
+});
+// ===== END ANALYTICS =====
         res.status(200).json({
             candidates: [{
                 content: {
