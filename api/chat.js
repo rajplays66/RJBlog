@@ -259,6 +259,11 @@ if (shouldSearchWeb) {
                 enhancedPrompt += `\nBEST FOR: ${p.bestFor}`;
             });
             enhancedPrompt += `\n\nUse this product information in your response. If appropriate, suggest the most relevant product.`;
+            if (relevantProducts.length === 1) {
+        const product = PRODUCTS[relevantProducts[0]];
+        enhancedPrompt += `\n\nPAYMENT LINK: ${product.paymentLink}`;
+        enhancedPrompt += `\nInclude this purchase option in your response. Say: "You can purchase instantly: ${product.paymentLink}" or similar.`;
+            }
         }
         // ===== END BUSINESS LOGIC =====
         
