@@ -72,6 +72,46 @@ if (data.metadata?.suggestedProducts?.length > 0) {
     } finally {
         hideTyping();
     }
+    // PRODUCT BUTTONS FUNCTION - ADD THIS WHERE IT WAS CUT OFF
+function showProductButtons(products) {
+    // Remove any existing product buttons
+    const existingButtons = document.querySelectorAll('.product-button');
+    existingButtons.forEach(button => button.remove());
+    
+    // Create container for product buttons
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'product-buttons-container';
+    buttonContainer.style.marginTop = '10px';
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '8px';
+    
+    // Create a button for each suggested product
+    products.forEach(product => {
+        const button = document.createElement('button');
+        button.className = 'product-button';
+        button.textContent = product.name || `Product: ${product.id}`;
+        button.style.padding = '8px 12px';
+        button.style.backgroundColor = '#007bff';
+        button.style.color = 'white';
+        button.style.border = 'none';
+        button.style.borderRadius = '4px';
+        button.style.cursor = 'pointer';
+        button.style.fontSize = '14px';
+        
+        // Add click handler for product selection
+        button.addEventListener('click', () => {
+            userInput.value = `Tell me more about ${product.name || 'this product'}`;
+            sendbutton.click();
+        });
+        
+        buttonContainer.appendChild(button);
+    });
+    
+    // Add the buttons to the chat
+    chatMessages.appendChild(buttonContainer);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 }
 
 // NEW UPDATED FUNCTION (REPLACE OLD ONE)
