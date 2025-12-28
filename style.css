@@ -956,3 +956,24 @@ custom
     align-items: center;
     gap: 8px;  /* Reduce from 12px to 8px */
 }
+/* Target the specific welcome text */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Make sure "Welcome to RJSyncro" fits */
+    .hero-title .highlight {
+        font-size: 1.8rem !important;
+        display: inline !important;
+    }
+    
+    /* Fix the subtitle */
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 20px !important;
+        max-width: 95% !important;
+    }
+}
